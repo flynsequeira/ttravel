@@ -14,4 +14,4 @@ If any command doesnt work, try to start the command with sudo. Like 'sudo pip i
 8. pip install requirements<br>
   if this doesnt work, try 'pip install requirements.txt'<br>
 9. python app.py<br>
-  This command should start the server and also show the url. Open that url in your pc and happy coding. If you face any<br> issue, ping me, and I'll check it out.<br>
+  This command should start the server and also show the url. It usually shows 0.0.0.0/8000. If it doesn't there's an issue. Ping me. Open that url in your pc and happy coding. If you face any<br> issue, ping me, and I'll check it out.<br>
