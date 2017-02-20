@@ -1,0 +1,37 @@
+{%extends "home.html"%}
+{% block title %}Blogpost|{% endblock %}
+{% block content %}
+<div class="container">
+  <h4> Blog Posts </h4>
+  <a href="/blog/new">
+    <button class="btn btn-default">
+      Create New Post
+    </button>
+  </a>
+  <hr>
+  <div class="row">
+  {% for post in posts %}
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><img class="img-responsive img-rounded" src="{{url_for('uploaded_file', filename=post.filename)}}" alt="Blog Image" style="height:300px; width:100%; overflow:hidden;"></div>
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+      <a href="{{url_for('post',blog_id=post.id)}}"> <h3 class="post-title">{{post.title}}</h3> </a>
+      <p>{{post.description[1:300]}}<a href="{{url_for('post',blog_id=post.id)}}">...(read more)...</a></p>
+      {% if post.time %}
+      <p>Posted by {{blogger}}on {{post.time.strftime("%d %B, %Y")}}</p>
+      {% endif %}
+      {% if user: %}
+      {% if user.id==post.user_id: %}
+      <a href="{{url_for('delete_post',blog_id=post.id)}}">
+        <button class="btn btn-default">Delete</button>
+      </a>
+      <a href="{{url_for('edit_post',blog_id=post.id)}}">
+        <button class="btn btn-default">Edit</button>
+      </a>
+    {% endif %}
+    {% endif %}
+    </div>
+    <hr>
+  {% endfor %}
+  </div>
+  
+</div>
+{% endblock %}

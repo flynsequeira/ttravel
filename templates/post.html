@@ -1,0 +1,30 @@
+
+{%extends "home.html"%}
+{% block title %}Post|{% endblock %}
+{% block content %}
+<div class='container'>
+	<div class='row'>
+	<div class='col-lg-6 col-md-6 col-sm-6 col-xs-12'>
+    <h3 class="post-title">{{post.title}}</h3>
+    <hr>
+    <p class="post-meta">Posted by <a href="#">{{blogger.name}}</a> on {{post.time}}</p>
+    <hr>
+    <p>{{post.description}}</p>
+    <hr>
+    {% if logged_user: %}
+    {% if logged_user.id==post.user_id: %}
+    <a href="{{url_for('delete_post',blog_id=post.id)}}">
+      <button class="btn btn-default">Delete</button>
+    </a>
+    <a href="{{url_for('edit_post',blog_id=post.id)}}">
+      <button class="btn btn-default">Edit</button>
+    </a>
+    {% endif %}
+    {% endif %}
+    <hr>
+    </div>
+    <div class='col-lg-6 col-md-6 col-sm-6 col-xs-12'>
+    <img src="{{url_for('uploaded_file', filename=post.filename)}}" alt='blog image error' width=100%>
+    </div>
+<div class='container'>
+{%endblock%}

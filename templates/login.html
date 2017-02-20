@@ -1,0 +1,19 @@
+{%extends "home.html"%}
+{% block title %}Login|{% endblock %}
+{% block content %}
+<div class="container">
+	<h4> Login </h4>
+	<br>
+	{% from "_formhelpers.html" import render_field %}
+	<form method=post action="#">
+		<dl>
+		{{render_field(form.email)}}
+		{{render_field(form.password)}}
+		</dl>
+		<p><input type=submit value=Login></p>
+	</form>
+	{% if error %}
+		<p class="error"> <strong> Error: </strong> {{error}} </p>
+	{% endif %}
+</div>
+{% endblock %}

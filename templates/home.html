@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/clean-blog.min.css') }}">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <title>{% block title %}Home|{% endblock %}TrueTravel</title>
+  </head>
+  <body>
+
+
+<!-- NAVIGATION BAR -->
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{url_for('home')}}">TrueTravel</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="">Plan<span class="sr-only">(current)</span></a></li>
+            <li><a href="{{url_for('blog_posts')}}">Blog</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% if logged_user: %}
+            <li><p class="navbar-text"> <i>Welcome {{logged_user.name}} </i></p></li>
+            <li><a href="{{url_for('logout')}}">Log out</a></li>
+            {% else %}
+            <li><a href="{{url_for('login')}}">Login</a></li>
+            <li><a href="{{url_for('register_user')}}">Sign Up</a></li>
+            {% endif %}
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+<!-- END OF NAVIGATION BAR -->
+
+<!-- FLASH MESSAGE -->
+    <div>
+      {% with errors = get_flashed_messages(category_filter=["error"]) %}
+        {% if errors %}
+          {% for msg in errors %}
+            <li>
+            <div class="alert alert-danger">
+              {{msg}}
+            </div>
+            </li>
+          {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+      {% with success = get_flashed_messages(category_filter=["success"]) %}
+        {% if success %}
+        <div class="alert alert-success">
+          <ul>
+            {% for msg in success %}
+            <li>{{ msg }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+
+
+<!-- END OF FLASH MESSAGE -->
+
+    {% block content %}
+
+    <header class="intro-header" style="background-image: url('{{ url_for('static', filename='img/home3-bg.jpg') }}')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>True Travel</h1>
+                        <hr class="small">
+                        <span class="subheading">Humanity is meant to explore.</span>
+                        <span class="subheading">We make it affordable...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+      <!-- BLOG -->
+      {% if posts: %}
+        <!-- Page Header -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Blogs
+                    <small>To share you're experiences...</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Projects Row -->
+        <div class="row">
+          {% for post in posts[0:3] %}
+            {% if not post==posts[2] %}
+            <div class="col-md-4 portfolio-item" style="margin-left:20px; margin-right:20px; border-right:1px; border-left:0px; border-top: 0px; border-bottom: 0px; border-style: solid; border-color: #e7e7e7;">
+            {% else %}
+            <div class="col-md-4 portfolio-item" style="margin-left:20px; margin-right:20px; border-left:0px; border-right:0px; border-top: 0px; border-bottom: 0px; border-style: solid; border-color: #e7e7e7;">
+            {% endif %}
+                <h3>
+                    <a href="{{url_for('post',blog_id=post.id)}}">{{post.title}}</a>
+                </h3>
+                <a href="{{url_for('post',blog_id=post.id)}}">
+                    <img class="img-responsive img-rounded" src="{{url_for('uploaded_file', filename=post.filename)}}" alt="Blog Image" style="height:300px; width:100%; overflow:hidden;">
+                </a>
+                {% for blogger in bloggers: %}
+                {% if blogger.id == post.user_id: %}
+                <p class="post-meta">Posted by <a href="#">{{blogger.name}}</a> on {{post.time}}</p>
+                {% endif %}
+                {% endfor %}
+                <p> {{post.description[0:20]}} <a href="{{url_for('post',blog_id=post.id)}}"> read more... </a> </p>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- /.row -->
+        <ul class="pager" style="margin-right:20px">
+            <li class="next">
+                <a href="{{url_for('blog_posts')}}">All Posts &rarr;</a>
+            </li>
+        </ul>
+      {% endif %}
+
+      <!-- END OF BLOG -->
+{% endblock %}
+      <hr>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; TrueTravel 2016</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- END OF FOOTER -->
+
+     <!-- jQuery -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{{ url_for('static', filename='js/clean-blog.min.js') }}"></script>
+  </body>
+</html>

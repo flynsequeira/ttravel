@@ -1,0 +1,476 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script
+src="http://maps.googleapis.com/maps/api/js">
+</script>
+</script>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script>
+
+
+
+
+function romantic(){
+var mapProp = {
+    center:new google.maps.LatLng(8.5074,76.9730),
+    zoom:4,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+
+ var icon = {
+    url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQU1lChorraU0GS1kSWX62A8s2xNgbs-Pxw51avt0ab78qkARbu9A", // url
+    scaledSize: new google.maps.Size(15, 15), // scaled size
+    origin: new google.maps.Point(0,0), // origin
+    anchor: new google.maps.Point(0, 0) // anchor
+};
+
+
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+ var wayanard=new google.maps.LatLng(11.6050,76.0830);
+ var munnar=new google.maps.LatLng(10.0892,77.0597); 
+ var kovalam=new google.maps.LatLng(8.3000,77.2000);
+ var kumarakon=new google.maps.LatLng(9.5833,76.4333);
+ var athirappilly=new google.maps.LatLng(10.2847,76.5686);
+var m1=new google.maps.Marker({
+                                   position:wayanard,
+                                   icon: icon
+                                  });
+
+var m2=new google.maps.Marker({
+                                   position:munnar,
+                                   icon: icon
+                                  });
+var m3=new google.maps.Marker({
+                                   position:kovalam,
+                                   icon: icon
+                                  });
+var m4=new google.maps.Marker({
+                                   position:kumarakon,
+                                   icon: icon
+                                  });
+var m5=new google.maps.Marker({
+                                   position:athirappilly,
+                                   icon: icon
+                                  });
+
+m1.setMap(map);
+m2.setMap(map);  
+m3.setMap(map);
+m4.setMap(map);
+m5.setMap(map);
+}
+
+
+function adventure(){
+var mapProp = {
+    center:new google.maps.LatLng(8.5074,76.9730),
+    zoom:4,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+
+ 
+
+
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+ var icon = {
+    url: "http://media1.santabanta.com/full1/Adventure%20Sports/Adventure%20Sports/adventure-sports-50a.jpg", // url
+    scaledSize: new google.maps.Size(20,20), // scaled size
+    origin: new google.maps.Point(0,0), // origin
+    anchor: new google.maps.Point(0, 0) // anchor
+};
+
+
+ var wayanard=new google.maps.LatLng(11.6050,76.0830);
+ var thekkady=new google.maps.LatLng(9.5330,77.2000); 
+ 
+var m1=new google.maps.Marker({
+                                   position:wayanard,
+                                   icon: icon
+                                  });
+
+var m2=new google.maps.Marker({
+                                   position:thekkady,
+                                   icon: icon
+                                  });
+
+
+m1.setMap(map);
+m2.setMap(map);
+
+var wayanard_content='<h4>Wayanad :- </h4>'+
+                      '1.Chembra Peak(mountain climbing) <br>'+
+                           '2.trekking<br><br>'+
+                      '<a href="{{url_for('hotels')}}"> hotels </a>'+
+                      '<a href="{{url_for('homestays')}}"> homestays </a>  <br>';
+                             
+
+var thekkady_content='<h4>thekkady :- </h4>'+
+                           '1.canoeing <br>'+
+                           '2.kayaking & rafting<br><br>'+
+                      '<a href="{{url_for('hotels')}}"> hotels </a>'+
+                      '<a href="{{url_for('homestays')}}.html"> homestays </a><br>' ;
+
+var infowindow1 = new google.maps.InfoWindow({
+  content:wayanard_content
+  });
+
+google.maps.event.addListener(m1, 'click', function() {
+  infowindow1.open(map,m1);
+  });  
+
+var infowindow2 = new google.maps.InfoWindow({
+  content:thekkady_content
+  });
+
+google.maps.event.addListener(m2, 'click', function() {
+  infowindow2.open(map,m2);
+  });  
+
+}
+
+
+
+
+function adventure(){
+var mapProp = {
+    center:new google.maps.LatLng(8.5074,76.9730),
+    zoom:4,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+
+ 
+
+
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+ var icon = {
+    url: "http://media1.santabanta.com/full1/Adventure%20Sports/Adventure%20Sports/adventure-sports-50a.jpg", // url
+    scaledSize: new google.maps.Size(20,20), // scaled size
+    origin: new google.maps.Point(0,0), // origin
+    anchor: new google.maps.Point(0, 0) // anchor
+};
+
+
+ var wayanard=new google.maps.LatLng(11.6050,76.0830);
+ var thekkady=new google.maps.LatLng(9.5330,77.2000); 
+ 
+var m1=new google.maps.Marker({
+                                   position:wayanard,
+                                   icon: icon
+                                  });
+
+var m2=new google.maps.Marker({
+                                   position:thekkady,
+                                   icon: icon
+                                  });
+
+
+m1.setMap(map);
+m2.setMap(map);
+
+var wayanard_content='<h4>Wayanad :- </h4>'+
+                      '1.Chembra Peak(mountain climbing) <br>'+
+                           '2.trekking<br><br>'+
+                      '<a href="{{url_for('hotels')}}"> hotels </a>'+
+                      '<a href="{{url_for('homestays')}}"> homestays </a>  <br>';
+                             
+
+var thekkady_content='<h4>thekkady :- </h4>'+
+                           '1.canoeing <br>'+
+                           '2.kayaking & rafting<br><br>'+
+                      '<a href="{{url_for('hotels')}}"> hotels </a>'+
+                      '<a href="{{url_for('homestays')}}"> homestays </a><br>' ;
+
+var infowindow1 = new google.maps.InfoWindow({
+  content:wayanard_content
+  });
+
+google.maps.event.addListener(m1, 'click', function() {
+  infowindow1.open(map,m1);
+  });  
+
+var infowindow2 = new google.maps.InfoWindow({
+  content:thekkady_content
+  });
+
+google.maps.event.addListener(m2, 'click', function() {
+  infowindow2.open(map,m2);
+  });  
+
+}
+
+function family(){
+var mapProp = {
+    center:new google.maps.LatLng(8.5074,76.9730),
+    zoom:4,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+
+ var icon = {
+    url: "http://previews.123rf.com/images/tigatelu/tigatelu1307/tigatelu130700261/21063107-Cartoon-Family-traveling-with-car--Stock-Vector.jpg", // url
+    scaledSize: new google.maps.Size(20,20), // scaled size
+    origin: new google.maps.Point(0,0), // origin
+    anchor: new google.maps.Point(0, 0) // anchor
+};
+
+
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+ var wayanard=new google.maps.LatLng(11.6050,76.0830);
+ var munnar=new google.maps.LatLng(10.0892,77.0597); 
+ var kovalam=new google.maps.LatLng(8.3000,77.2000);
+ var kumarakon=new google.maps.LatLng(9.5833,76.4333);
+ var athirappilly=new google.maps.LatLng(10.2847,76.5686);
+var m1=new google.maps.Marker({
+                                   position:wayanard,
+                                   icon: icon
+                                  });
+
+var m2=new google.maps.Marker({
+                                   position:munnar,
+                                   icon: icon
+                                  });
+var m3=new google.maps.Marker({
+                                   position:kovalam,
+                                   icon: icon
+                                  });
+var m4=new google.maps.Marker({
+                                   position:kumarakon,
+                                   icon: icon
+                                  });
+var m5=new google.maps.Marker({
+                                   position:athirappilly,
+                                   icon: icon
+                                  });
+
+m1.setMap(map);
+m2.setMap(map);  
+m3.setMap(map);
+m4.setMap(map);
+m5.setMap(map);
+}
+
+
+
+
+
+function entertainment(){
+var mapProp = {
+    center:new google.maps.LatLng(8.5074,76.9730),
+    zoom:4,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+
+ 
+
+
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+ var icon = {
+    url: "http://static.asiawebdirect.com/m/kl/portals/kuala-lumpur-ws/homepage/entertainments/pagePropertiesImage/entertainment-kl.jpg", // url
+    scaledSize: new google.maps.Size(20,20), // scaled size
+    origin: new google.maps.Point(0,0), // origin
+    anchor: new google.maps.Point(0, 0) // anchor
+};
+
+
+ var wayanard=new google.maps.LatLng(11.6050,76.0830);
+ var thekkady=new google.maps.LatLng(9.5330,77.2000); 
+ 
+var m1=new google.maps.Marker({
+                                   position:wayanard,
+                                   icon: icon
+                                  });
+
+var m2=new google.maps.Marker({
+                                   position:thekkady,
+                                   icon: icon
+                                  });
+
+
+m1.setMap(map);
+m2.setMap(map);
+
+var wayanard_content='<h4>Wayanad :- </h4>'+
+                      '1.Chembra Peak(mountain climbing) <br>'+
+                           '2.trekking<br><br>'+
+                      '<a href="{{url_for('hotels')}}"> hotels </a>'+
+                      '<a href="{{url_for('homestays')}}"> homestays </a>  <br>';
+                             
+
+var thekkady_content='<h4>thekkady :- </h4>'+
+                           '1.canoeing <br>'+
+                           '2.kayaking & rafting<br><br>'+
+                      '<a href="{{url_for('hotels')}}"> hotels </a>'+
+                      '<a href="{{url_for('homestays')}}"> homestays </a><br>' ;
+
+var infowindow1 = new google.maps.InfoWindow({
+  content:wayanard_content
+  });
+
+google.maps.event.addListener(m1, 'click', function() {
+  infowindow1.open(map,m1);
+  });  
+
+var infowindow2 = new google.maps.InfoWindow({
+  content:thekkady_content
+  });
+
+google.maps.event.addListener(m2, 'click', function() {
+  infowindow2.open(map,m2);
+  });  
+
+}
+
+
+
+
+
+
+function relaxation(){
+var mapProp = {
+    center:new google.maps.LatLng(8.5074,76.9730),
+    zoom:4,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+
+ var icon = {
+    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAKMI8xmdRRT42xQPpz9pTG4_N39TAjink4FjYoF6PIA3URLUxhQ", // url
+    scaledSize: new google.maps.Size(25,25), // scaled size
+    origin: new google.maps.Point(0,0), // origin
+    anchor: new google.maps.Point(0, 0) // anchor
+};
+
+
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+ var alleppey=new google.maps.LatLng(9.4900,76.3300);
+ 
+var m1=new google.maps.Marker({
+                                   position:alleppey,
+                                   icon: icon
+                                  });
+
+m1.setMap(map);
+
+var alleppey_content='<h4>alleppey :- </h4>'+
+                      'Alleppey is the sixth largest city in kerala.<br>It is situated 62km to south of Kachi and 155km north of Trivandrum,capital of Kerala.<br> <h4>Places to visit:- </h4>'+
+                      '<ul>'+
+                        '<li>marari beach</li>'+
+                        '<li>ambalpuzha sree krishna temple'+
+                        '<li>alleppey beach</li>'+
+                        '<li>revi karunakaran museum</li>'+
+                        '<li>kayaking & canoeing</li>'+
+                        '<li>kuttanad(rice bowl of kerala)</li>'+
+                        '</ul>'+
+                      '<a href="{{url_for('hotels')}}" class="btn btn-success" role="button"> hotels </a>'+
+                      '<a href="{{url_for('homestays')}}" class="btn btn-info" role="button"> homestays </a>'+
+                      '<a href="{{url_for('houseboats')}}" class="btn btn-danger" role="button"> houseboats </a><br>';
+
+var infowindow1 = new google.maps.InfoWindow({
+  content:alleppey_content
+  });
+
+google.maps.event.addListener(m1, 'click', function() {
+  infowindow1.open(map,m1);
+  });  
+
+}
+
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+
+<style>
+
+        header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;   
+}
+nav {
+    line-height:30px;
+    background-color:white;
+    height:500px;
+    width:750px;
+    float:left;        
+}
+section {
+    width:300px;
+    height:700px;
+    float:left;
+    padding:10px;    
+}
+
+</style>
+
+</head>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge"> <!-- For intranet testing only, remove in production. -->
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>Slide Show</title>
+</head>
+
+<body>
+
+<header>
+<h1> Places selection and details  </h1>
+</header>
+
+<nav>
+<div id="googleMap" style="width:750px;height:500px;"></div> <br />
+<button type="button" class="btn btn-danger" onclick = "romantic()"> romantic </button>
+<button type="button" class="btn btn-warning" onclick = "adventure()"> adventure </button>
+<button type="button" class="btn btn-info" onclick = "family()"> family </button>
+<button type="button" class="btn btn-success" onclick = "entertainment()"> entertainment </button>
+<button type="button" class="btn btn-primary" onclick = "relaxation()"> relaxation </button>
+ 
+
+<button type="button" class="btn btn-danger"> option 1</button>
+<button type="button" class="btn btn-warning"> option 2 </button>
+<button type="button" class="btn btn-info"> option 3 </button>
+
+</nav>
+
+<section> 
+<p> 
+<div class="container">  
+<a href=" http://www.optimap.net/#" class="btn btn-success" role="button">check out the route </a></button>
+<img border="0" alt="maps picture" src="http://www.codeproject.com/KB/web-image/Google_map/sampleMap.JPG" width="100" height="100">
+
+<img border="0" alt="maps picture" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT_BXvgUtab1Ru8q9qE9HqR6MMOMhK_z-2l-EPv6BNCUCf6N6FbQPpcueo" width="315" height="100">
+
+
+<br>
+<img border="0" alt="maps picture" src="http://www.kalpadeepholidays.com/userfiles/Backwaters%20of%20Kerala%202(4).jpg" width="570" height="200">
+<br>
+
+
+<a href="http://www.jetairways.com/EN/IN/Home.aspx#" class="btn btn-primary" role="button">book flights for trip</a></button>
+<img border="0" alt="flights picture" src="https://www.froschstudenttravel.com/wp-content/uploads/2012/07/flights_968897803.jpg" width="105" height="100">
+
+<img border="0" alt="maps picture" src="http://www.holidaytravel.co/userfiles/images/About%20High%20Lights%20of%20Kerala%20Package.jpg" width="315" height="100">
+<br>
+
+<img border="0" alt="maps picture" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7YRXYtGn4Hz5Ebx8iHd78FuVx7wBSOWh4GvmE0Ltw2B0UoYdb" width="570" height="145">
+
+</div>
+
+
+
+</section>
+</body>
+</html>
